@@ -186,22 +186,7 @@ function addFields(prevN)
 
             if(checkIfGoalAchieved(i, j))
                 return [n, true];
-            // if(checkObstacles(i - 1, j - 1) || checkObstacles(i - 1, j) || checkObstacles(i - 1, j+1) || 
-            // checkObstacles(i, j - 1) || checkObstacles(i, j+1) ||
-            // checkObstacles(i + 1, j - 1) || checkObstacles(i + 1, j) || checkObstacles(i + 1, j+1) )
-            //     continue;
 
-            // if(positions[indexOfStart + (i-1)*sizeX/20 + j - 1] != 4)
-            // {
-            //     indexesOfPrev[indexOfStart + (i-1)*sizeX/20 + j - 1] = indexOfStart + i*sizeX/20 + j;
-            //     if(positions[indexOfStart + (i-1)*sizeX/20 + j - 1] == 3)
-            //     {
-            //         goal(indexOfStart + i*sizeX/20 + j);
-            //         return [n, true];
-            //     }
-            //     drawAnUpdatePositions(i-1,j-1);
-            //     newIndexesOfCircuit.push(indexOfStart + (i-1)*sizeX/20 + j - 1)
-            // }
             if(positions[indexOfStart + (i-1)*sizeX/20 + j] != 4)
             {
                 if(checkObstacles(i - 1, j))
@@ -211,19 +196,6 @@ function addFields(prevN)
                 drawAnUpdatePositions(i-1,j);
                 newIndexesOfCircuit.push(indexOfStart + (i-1)*sizeX/20 + j);
             }
-
-            // if(positions[indexOfStart + (i-1)*sizeX/20 + j+1] != 4)
-            // {
-            //     indexesOfPrev[indexOfStart + (i-1)*sizeX/20 + j + 1] = indexOfStart + i*sizeX/20 + j;
-            //     if(positions[indexOfStart + (i-1)*sizeX/20 + j + 1] == 3)
-            //     {
-            //         goal(indexOfStart + i*sizeX/20 + j);
-            //         return [n, true];
-            //     }
-            //     drawAnUpdatePositions(i-1,j+1);
-            //     newIndexesOfCircuit.push(indexOfStart + (i-1)*sizeX/20 + j+1);
-            // }
-            
             if(positions[indexOfStart + i*sizeX/20 + j-1] != 4)
             {
                 if(checkObstacles(i, j-1))
@@ -243,18 +215,6 @@ function addFields(prevN)
                 drawAnUpdatePositions(i,j+1);
                 newIndexesOfCircuit.push(indexOfStart + i*sizeX/20 + j+1);
             }
-            
-            // if(positions[indexOfStart + (i+1)*sizeX/20 + j - 1] != 4)
-            // {
-            //     indexesOfPrev[indexOfStart + (i+1)*sizeX/20 + j - 1] = indexOfStart + i*sizeX/20 + j;
-            //     if(positions[indexOfStart + (i+1)*sizeX/20 + j - 1] == 3)
-            //     {
-            //         goal(indexOfStart + i*sizeX/20 + j);
-            //         return [n, true];
-            //     }
-            //     drawAnUpdatePositions(i+1,j-1);
-            //     newIndexesOfCircuit.push(indexOfStart + (i+1)*sizeX/20 + j-1);
-            // }
              
             if(positions[indexOfStart + (i+1)*sizeX/20 + j] != 4)
             {
@@ -265,18 +225,6 @@ function addFields(prevN)
                 drawAnUpdatePositions(i+1,j);
                 newIndexesOfCircuit.push(indexOfStart + (i+1)*sizeX/20 + j);
             }
-
-            // if(positions[indexOfStart + (i+1)*sizeX/20 + j+1] != 4)
-            // {
-            //     indexesOfPrev[indexOfStart + (i+1)*sizeX/20 + j+1] = indexOfStart + i*sizeX/20 + j;
-            //     if(positions[indexOfStart + (i+1)*sizeX/20 + j +1] == 3)
-            //     {
-            //         goal(indexOfStart + i*sizeX/20 + j);
-            //         return [n, true];
-            //     }
-            //     drawAnUpdatePositions(i+1,j+1); 
-            //     newIndexesOfCircuit.push(indexOfStart + (i+1)*sizeX/20 + j+1);
-            // }
         }
     }
     indexesOfCircuit = newIndexesOfCircuit;
@@ -338,9 +286,7 @@ function checkObstacles(i, j)
         return true;
     if(Math.floor(indexOfStart/(sizeX/20)) + i > sizeY/20-1)
         return true;
-    // for(var j=0; j < indexesOfObstacles.length; j++)
-    //     if(positions[i] == positions[indexesOfObstacles[j]])
-    //         return true;
+
     return false;
 }
 async function findPath()
